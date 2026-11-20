@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cherwell: population and jobs by area</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Cherwell: population and jobs by area</h1>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="row">
+        <label for="area">Area</label>
+        <select id="area"></select>
+      </div>
+      <div class="row">
+        <button id="clear" type="button">Show all areas</button>
+      </div>
+      <p class="help">
+        Click an area on the map (or pick one here) to highlight it in both charts.
+        Click it again, or click empty map, to go back to all three.
+      </p>
+
+      <ul class="key" aria-label="Map colours">
+        <li><span class="swatch banbury"></span> Banbury (north)</li>
+        <li><span class="swatch bicester"></span> Bicester (south-east)</li>
+        <li><span class="swatch kidlington"></span> Kidlington (south-west)</li>
+      </ul>
+
+      <div class="summary" aria-live="polite">
+        <h2 id="summary-title"></h2>
+        <div id="summary-body"></div>
+      </div>
+
+      <p id="status" class="status" role="status"></p>
+    </aside>
+
+    <main class="content">
+      <div id="map" role="application" aria-label="Map of Cherwell split into three areas"></div>
+      <div class="charts">
+        <div class="chart-wrap"><canvas id="pop-chart" role="img" aria-label="Line chart of population by area"></canvas></div>
+        <div class="chart-wrap"><canvas id="jobs-chart" role="img" aria-label="Bar chart of employee jobs by area"></canvas></div>
+      </div>
+    </main>
+  </div>
+
+  <footer>
+    Areas are approximate groupings of 2021 LSOAs. Population: ONS mid-year estimates.
+    Jobs: ONS Business Register and Employment Survey (via Nomis), 2023 and 2024; counts are
+    rounded by ONS, so area totals are approximate.
+  </footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
